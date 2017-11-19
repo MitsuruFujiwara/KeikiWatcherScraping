@@ -53,7 +53,7 @@ def main():
     print(df_sql)
 
     # csv形式で保存
-    df_sql.to_csv('data.csv', encoding="Shift-JIS")
+    df_sql.to_csv('data.csv', encoding="Shift-JIS", index=False)
 
     # データベースをクローズ
     conn.close()

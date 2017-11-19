@@ -10,23 +10,19 @@ def get_allurl(target):
     # webページ内の全urlを取得する関数
     _url = target
     data = request.urlopen(_url).read()
-    text = data.decode("utf-8")
     soup = BsObj(data, 'html.parser')
     links = soup.find_all("a")
-    link_list = []
     for a in links:
         try:
-            href = a.attrs['href']
-            link_list.append(href)
+            yield a.attrs['href']
         except:
             continue
-    return link_list
 
 def main():
 
     # 2010年以降のデータのリンクを取得
-    urls = get_allurl('http://www5.cao.go.jp/keizai3/watcher_index.html')
-    urls = urls + get_allurl('http://www5.cao.go.jp/keizai3/kako_watcher.html')
+    urls = list(get_allurl('http://www5.cao.go.jp/keizai3/watcher_index.html'))
+    urls = urls + list(get_allurl('http://www5.cao.go.jp/keizai3/kako_watcher.html'))
 
     # 景気判断理由の現状（watcher4）と先行き（watcher5）をダウンロードし、yyyymmddwatcherX.csvとして保存
     for u in urls:
