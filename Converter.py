@@ -23,6 +23,7 @@ class ConverterBase(object):
         df = df.replace('＊', np.nan)
         df = df.replace('−', np.nan)
         df = df[df.Label != '景気の現状判断']
+        df = df[df.Label != '景気の先行き判断']
         df = df.dropna()
         df.Comment = list(self.getComment(df.Comment))
 
