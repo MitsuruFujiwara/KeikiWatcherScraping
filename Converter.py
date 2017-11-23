@@ -61,8 +61,8 @@ class ConverterSakiyuki(ConverterBase):
 
 if __name__ == '__main__':
     # test
-    cg = ConverterGenjou('watcher4.csv')
+    cg = ConverterGenjou('CSVFiles/201711watcher4.csv')
     print(cg.getData())
 
-    cs = ConverterSakiyuki('watcher5.csv')
+    cs = ConverterSakiyuki('CSVFiles/201711watcher5.csv')
     print(cs.getData())
