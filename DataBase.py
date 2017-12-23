@@ -42,8 +42,8 @@ def main():
             continue
 
         # その他の情報を追加
-        df['year'] = y
-        df['month'] = m
+        df['year'] = int(y)
+        df['month'] = int(m)
 
         # データベースへ保存
         df.to_sql('data', conn, index=False, if_exists='append')
